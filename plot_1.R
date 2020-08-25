@@ -1,0 +1,20 @@
+##### Date: 25-08-2020 #############
+
+
+#### Read the data ###########
+data<-read.table("household_power_consumption.txt", stringsAsFactors = FALSE, header = TRUE, sep =";" )
+
+head(data)
+tail(data)
+
+
+subData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
+
+#str(subSetData)
+globalActivePower <- as.numeric(subData$Global_active_power)
+
+png("plot1.png", width=480, height=480)
+
+hist(globalActivePower, col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+
+dev.off()
